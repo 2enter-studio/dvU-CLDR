@@ -52,8 +52,7 @@ class CalendarDate {
     }
 
     dateImgPath() {
-        // return `./static/dates/${this.date}.png`
-        return './static/dates/test.3.png'
+        return `./static/dates/${this.date}.png`
     }
 
     dateFormImgPath() {
