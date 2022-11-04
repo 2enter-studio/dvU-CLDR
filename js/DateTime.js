@@ -30,7 +30,7 @@ class CalendarDate {
         let fixedYear = (this.year - 1911).toString();
         let result = '';
         for (let char of fixedYear) {
-            result += toZh(char)
+            result += toZh(char) + ' '
         }
         return result += '年';
     }
@@ -56,7 +56,19 @@ class CalendarDate {
         return './static/dates/test.3.png'
     }
 
-    dateform(x, y, unitSize) {
+    dateFormImgPath() {
+        let totalDate;
+        if ([1, 3, 5, 7, 8, 10, 12].includes(this.month)) totalDate = 31;
+        else totalDate = 30;
+        if (this.month == 2) {
+            if (isLeapYear(this.year)) totalDate = 29;
+            else totalDate = 28;
+        }
+
+        return `./static/dateforms/${totalDate}.png`
+    }
+
+    dateForm(x, y, unitSize) {
         let totalDate;
         if ([1, 3, 5, 7, 8, 10, 12].includes(this.month)) totalDate = 31;
         else totalDate = 30;
@@ -65,7 +77,7 @@ class CalendarDate {
             if (isLeapYear(this.year)) totalDate = 29;
             else totalDate = 28;
         }
-        
+
         let firstSun = (this.date - this.day) % 7;
         let firstDatesWeekday = 6 - firstSun + 2;
     }
