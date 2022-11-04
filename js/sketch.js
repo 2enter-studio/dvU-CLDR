@@ -36,10 +36,10 @@ function setup() {
     stroke(0, 0, 255);
 
     textSize(TEXT_SIZE);
-    text(cldDate.zhRocYear(), SIZE * .08, SIZE * .435);
+    text(cldDate.zhRocYear(), SIZE * .08, SIZE * .44);
 
     textSize(TEXT_SIZE * 1.8);
-    text(cldDate.year, SIZE * .85, SIZE * .435);
+    text(cldDate.year, SIZE * .847, SIZE * .44);
 }
 
 function draw() { }
