@@ -29,7 +29,7 @@ function setup() {
     image(backImg, 0, 0, SIZE, H);
     image(fruitImg, 0, 0, SIZE, SIZE * .29);
     image(dateFormImg, SIZE * .078, SIZE * .456, SIZE * .091, SIZE * .104);
-    image(monthImg, SIZE * .845, SIZE * .456, SIZE * .08, SIZE * .1);
+    image(monthImg, SIZE * .845, SIZE * .456, SIZE * .083, SIZE * .103);
     image(weekdayImg, SIZE * .230, SIZE * 1.02, SIZE * .535, SIZE * .123);
     image(dateImg, SIZE * .255, H * .33, SIZE * .50, SIZE * .38);
 
