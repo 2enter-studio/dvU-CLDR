@@ -12,8 +12,10 @@ function preload() {
     H = SIZE * 3 / 2;
     TEXT_SIZE = SIZE * .0195
     console.log(SIZE);
+
     let currentDate = new Date();
     cldDate = new CalendarDate(currentDate);
+
     backImg = loadImage('./static/backImg.png');
     fruitImg = loadImage(cldDate.fruitImgPath());
     monthImg = loadImage(cldDate.monthImgPath());

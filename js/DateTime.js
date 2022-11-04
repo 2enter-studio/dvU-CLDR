@@ -21,7 +21,7 @@ class CalendarDate {
     constructor(datetime) {
         this.datetime = datetime;
         this.year = datetime.getFullYear();
-        this.month = datetime.getMonth();
+        this.month = datetime.getMonth() + 1;
         this.date = datetime.getDate();
         this.day = datetime.getDay();
     }
