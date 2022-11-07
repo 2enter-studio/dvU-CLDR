@@ -1,47 +1,52 @@
-// const SIZE = 1417 / 2;
-let SIZE, H, TEXT_SIZE;
-let backImg, fruitImg, monthImg;
-let weekdayImg, dateImg;
+// const main_width = 1417 / 2;
+let main_width, main_height, text_size;
+let back_img, fruit_img, month_img, weekday_img, date_img;
 let cldDate;
-const MAX_WIDTH = 650;
+let first_date = new Date('0001-01-01');
 
-function preload() {
-    if (windowWidth > MAX_WIDTH) SIZE = MAX_WIDTH;
-    else SIZE = windowWidth * .85;
+function image_loading(date_input) {
+    cldDate = new CalendarDate(date_input);
 
-    H = SIZE * 3 / 2;
-    TEXT_SIZE = SIZE * .0195
-    console.log(SIZE);
-
-    let currentDate = new Date();
-    cldDate = new CalendarDate(currentDate);
-
-    backImg = loadImage('./static/backImg.png');
-    fruitImg = loadImage(cldDate.fruitImgPath());
-    monthImg = loadImage(cldDate.monthImgPath());
-    weekdayImg = loadImage(cldDate.weekdayImgPath());
-    dateImg = loadImage(cldDate.dateImgPath());
-    dateFormImg = loadImage(cldDate.dateFormImgPath());
+    back_img = loadImage('./static/backImg.png');
+    fruit_img = loadImage(cldDate.fruitImgPath());
+    month_img = loadImage(cldDate.monthImgPath());
+    weekday_img = loadImage(cldDate.weekdayImgPath());
+    date_img = loadImage(cldDate.dateImgPath());
+    date_form_img = loadImage(cldDate.dateFormImgPath());
 }
 
-function setup() {
-    let mainCanvas = createCanvas(SIZE, H)
-    mainCanvas.parent('p5-container')
-
-    image(backImg, 0, 0, SIZE, H);
-    image(fruitImg, 0, 0, SIZE, SIZE * .29);
-    image(dateFormImg, SIZE * .078, SIZE * .456, SIZE * .091, SIZE * .104);
-    image(monthImg, SIZE * .845, SIZE * .456, SIZE * .083, SIZE * .103);
-    image(weekdayImg, SIZE * .230, SIZE * 1.02, SIZE * .535, SIZE * .123);
-    image(dateImg, SIZE * .255, H * .33, SIZE * .50, SIZE * .38);
+function show_calendar() {
+    image(back_img, 0, 0, main_width, main_height);
+    image(fruit_img, 0, 0, main_width, main_width * .29);
+    image(date_form_img, main_width * .078, main_width * .456, main_width * .091, main_width * .104);
+    image(month_img, main_width * .845, main_width * .456, main_width * .083, main_width * .103);
+    image(weekday_img, main_width * .230, main_width * 1.02, main_width * .535, main_width * .123);
+    image(date_img, main_width * .255, main_height * .33, main_width * .50, main_width * .38);
 
     stroke(0, 0, 255);
 
-    textSize(TEXT_SIZE);
-    text(cldDate.zhRocYear(), SIZE * .08, SIZE * .44);
+    textSize(text_size);
+    text(cldDate.zhRocYear(), main_width * .08, main_width * .44);
 
-    textSize(TEXT_SIZE * 1.8);
-    text(cldDate.year, SIZE * .847, SIZE * .44);
+    textSize(text_size * 1.8);
+    text(cldDate.year, main_width * .847, main_width * .44);
+}
+
+function preload() {
+    image_loading(new Date());
+}
+
+function setup() {
+    frameRate(1);
+
+    main_height = (windowWidth > windowHeight) ? windowHeight * .96 : windowWidth * .96;
+    main_width = main_height * 2 / 3;
+    text_size = main_width * .0195
+
+    let main_canvas = createCanvas(main_width, main_height)
+    main_canvas.parent('p5-container')
+
+    show_calendar();
 }
 
 function draw() { }
